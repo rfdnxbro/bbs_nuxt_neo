@@ -11,7 +11,9 @@
     >
       <v-card v-for="post in posts" :key="post.id">
         <v-card-title class="headline">
-          {{ post.subject }} - {{ post.user.name }}
+          <n-link :to="`/posts/${post.id}`">
+            {{ post.subject }} - {{ post.user.name }}
+          </n-link>
         </v-card-title>
         <v-card-text>
           {{ post.body }}
