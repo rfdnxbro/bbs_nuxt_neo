@@ -17,5 +17,8 @@ export const mutations = {
 export const actions = {
   async fetchPosts () {
     return await this.$axios.$get('/v1/posts')
+  },
+  async newPost (_c, post) {
+    return await this.$axios.$post('/v1/posts', post)
   }
 }
