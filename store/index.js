@@ -29,5 +29,15 @@ export const mutations = {
 export const actions = {
   async signUp (_c, user) {
     return await this.$axios.$post('/v1/auth', user)
+  },
+  async logOut ({ commit }) {
+    await this.$axios.$delete('/v1/auth/sign_out')
+    commit('setUser', null)
+    commit('setAuth', {})
+
+    this.$router.push('/')
+  },
+  async logIn (_c, user) {
+    return await this.$axios.$post('/v1/auth/sign_in', user)
   }
 }

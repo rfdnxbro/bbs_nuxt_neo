@@ -14,6 +14,7 @@
       <v-btn
         v-if="logged_in"
         icon
+        @click="logOut"
       >
         <v-icon>mdi-logout</v-icon>
       </v-btn>
@@ -24,6 +25,14 @@
         nuxt
       >
         <v-icon>mdi-account-plus</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="!logged_in"
+        icon
+        to="/log_in"
+        nuxt
+      >
+        <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -63,6 +72,11 @@ export default {
           this.$store.commit('setUser', null)
           this.$store.commit('setAuth', {})
         })
+    }
+  },
+  methods: {
+    logOut () {
+      this.$store.dispatch('logOut')
     }
   }
 }
